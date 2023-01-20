@@ -7,5 +7,5 @@ app = Flask(__name__)
 def page_index():
     return "Главная страничка" 
 
-
+print(17)
 app.run(port="9999")
