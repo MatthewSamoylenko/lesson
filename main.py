@@ -1,19 +1,22 @@
-email = "support@gmail.com"
-print(email.count('@'))
+dictionary = {"cat": "Котейка"}
+print(dictionary)
+print(dictionary["cat"])
 
-str_test = 'sdfsadf asdf asdf asd asdf a asdf '
-print(str_test.count(' '))
+animal = "cat"
+dictionary[animal] = "kot"
 
-email = "my new mail@gmail.com"
-print(email.replace(' ', '_'))
-print(email.title())
+print(dictionary[animal])
 
-s = "docs.google.com"
-s = s.split(".")
+del dictionary["cat"]
 
-print(s)
-print(type(s))
+print(dictionary)
 
-print(s[2])
+stupid_list = {"Name": "Alex", "Age": "32", "Address": "Himki"}
+print(stupid_list.keys())
+print(stupid_list.values())
 
-print('.'.join(s))
+for key in stupid_list:
+    print(key)
+
+for key, item in stupid_list.items():
+    print(key,item)
