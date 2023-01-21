@@ -11,7 +11,7 @@ del dictionary["cat"]
 
 print(dictionary)
 
-stupid_list = {"Name": "Alex", "Age": "32", "Address": "Himki"}
+stupid_list = {"Name": "Alex", "Age": "33", "Address": "Himki"}
 print(stupid_list.keys())
 print(stupid_list.values())
 
