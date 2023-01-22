@@ -1,66 +1,98 @@
-print("Select level difficulty")
+import random
 
-easy = {"be": "быть", "do": "делать", "have": "иметь", "make": "делать", "go": "идти"}
-medium = {"be": "быть", "do": "делать", "have": "иметь", "make": "делать", "go": "идти"}
-hard = {"be": "быть", "do": "делать", "have": "иметь", "make": "делать", "go": "идти"}
+questions = ("code", "bit", "list", "soul", "next")
 
-levels = {
-    0: "0",
-    1: "1",
-    2: "2",
-    3: "3",
-    4: "4",
-    5: "5"
+morse_code = {
+  "0": "-----",
+  "1": ".----",
+  "2": "..---",
+  "3": "...--",
+  "4": "....-",
+  "5": ".....",
+  "6": "-....",
+  "7": "--...",
+  "8": "---..",
+  "9": "----.",
+  "a": ".-",
+  "b": "-...",
+  "c": "-.-.",
+  "d": "-..",
+  "e": ".",
+  "f": "..-.",
+  "g": "--.",
+  "h": "....",
+  "i": "..",
+  "j": ".---",
+  "k": "-.-",
+  "l": ".-..",
+  "m": "--",
+  "n": "-.",
+  "o": "---",
+  "p": ".--.",
+  "q": "--.-",
+  "r": ".-.",
+  "s": "...",
+  "t": "-",
+  "u": "..-",
+  "v": "...-",
+  "w": ".--",
+  "x": "-..-",
+  "y": "-.--",
+  "z": "--..",
+  ".": ".-.-.-",
+  ",": "--..--",
+  "?": "..--..",
+  "!": "-.-.--",
+  "-": "-....-",
+  "/": "-..-.",
+  "@": ".--.-.",
+  "(": "-.--.",
+  ")": "-.--.-"
 }
 
-answers = {}
+answers = []
 
-selected_level = input("easy, medium, hard \n")
+def morse_encode(sentence):
+    answer = ""
+    for i in range(len(sentence)):
+        for j, item in morse_code.items():
+            if sentence[i] == j:
+                answer = answer + morse_code[j]
+                break
+    return answer
 
-if selected_level == "easy":
-    for key, item in easy.items():
-        len_words = len(item)
-        print(f"{key},{len_words}, The first sing {item[0]}")
-        answer = input()
-        if answer != item:
-            print(f" Error, {key} it's {item}")
-        answers[key] = (answer == item)
+def get_word():
+  random_index = random.randrange(len(questions))
+  print(questions[random_index])
+  return questions[random_index]
 
-if selected_level == "medium":
-    for key, item in medium.items():
-        len_words = len(item)
-        print(f"{key},{len_words}, The first sing {item[0]}")
-        answer = input()
-        if answer != item:
-            print(f" Error, {key} it's {item}")
-        answers[key] = (answer == item)
+def print_statistics():
+  count = 0
+  for i in answers:
+    if i == True:
+      count += 1
 
-if selected_level == "hard":
-    for key, item in hard.items():
-        len_words = len(item)
-        print(f"{key},{len_words}, The first sing {item[0]}")
-        answer = input()
-        if answer != item:
-            print(f" Error, {key} it's {item}")
-        answers[key] = (answer == item)
+  print(f"{len(answers)}")
+  print(f"{count}")
+  print(f"{len(answers)-count}")
 
+def start_pley():
+  for i in range(5):
+    word = get_word()
+    morse_code_answer = morse_encode(word)
+    print(f"Word {morse_code_answer}")
+    answer = input()
+    if answer == word:
+      answers.append(True)
+    else:
+      answers.append(False)
 
-print("True")
-for key, item in answers.items():
-    if item == True:
-        print(key)
-
-print("False")
-for key, item in answers.items():
-    if item == False:
-        print(key)
+  print_statistics()
 
 
 
-count_answer = 0
-for key, item in answers.items():
-    if item == True:
-       count_answer += 1
 
 
-print(f"Your level {levels[count_answer]}")
+morse_encode(input())
+get_word()
+start_pley()
